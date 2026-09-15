@@ -114,7 +114,7 @@ if (value >= 1 && value < 6 ) {
   return "That'll be 7 Dollars";
 } else if (value >=18 && value <= 64 && isStudent) {
   return "Oh you're a student. Here is your discounted ticket. That'll be 10 dollars.";
-} else if (value >=18 && value <= 64 && isStudent === false) {
+} else if (value >=18 && value <= 64 && !isStudent) {
   return "That'll be 12 Dollars.";
 } else if (value >=65 && value <= 120) {
   return "That'll be 8 Dollars."
@@ -122,7 +122,7 @@ if (value >= 1 && value < 6 ) {
   return "Choose your age correctly";
 }}
 
-console.log(price(26, false));
+console.log(price(26, true));
 
 
 
