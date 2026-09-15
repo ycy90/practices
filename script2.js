@@ -1,4 +1,4 @@
-content = r'''/*
+/*
 ============================================================
 JAVASCRIPT CONTROL FLOW & LOOPS — PRACTICE SET
 ============================================================
@@ -580,10 +580,3 @@ ____________________________________________________________
     }
   }
 }
-'''
-
-path = "/mnt/data/javascript-control-flow-practice.js"
-with open(path, "w", encoding="utf-8") as f:
-    f.write(content)
-
-print("Dosya oluşturuldu:", path)
