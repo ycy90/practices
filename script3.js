@@ -52,8 +52,21 @@ Use Math.random() and Math.floor() for the random selection.
 
 // Write your solution below:
 
+const cities = ["Berlin", "Hamburg", "Munich"]
 
+function destinationOrganizer(array) {
+  array.push("Cologne");
+  array.unshift("Frankfurt");
+ const including = array.includes("Munich");
+  
+ if(including) {
+  const randomize = Math.floor(Math.random() * array.length);
+  const nextDestination = array[randomize];
+  return nextDestination;
+ }
+}
 
+console.log(destinationOrganizer(cities));
 
 /*
 ============================================================

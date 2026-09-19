@@ -318,7 +318,27 @@ Think carefully about the order in which you apply the discounts.
 */
 
 
+function discountCalculator(price, isMember) {
+  const memberDiscount = price - price * 0.20
+   const extraDiscount = memberDiscount - memberDiscount * 0.10 
+const normalDiscount = price - price * 0.10
+ 
+if(isMember && price >= 200) {  
+ return extraDiscount;}
+ else if (isMember) {
+  return memberDiscount;
+ } else if(price >= 200) {
+ return normalDiscount; 
+ } else {
+  return "No Discount";
+ } }
+
+ console.log(discountCalculator(100, true)); 
+console.log(discountCalculator(100, false)); 
+console.log(discountCalculator(250, true));
+
 /*
+
 ==================================================
 Exercise 9 USERNAME CLEANER
 ==================================================
@@ -348,6 +368,20 @@ toLowerCase()
 length
 if / else
 */
+
+function cleanUsername(username) {
+  const removed = username.trim();
+  const lowered = removed.toLowerCase();
+
+  if(lowered.length < 3) {
+    return "Username too short";
+  } else {
+    return lowered;
+  }
+}
+
+console.log((cleanUsername("   Yigitcan     ")));
+console.log((cleanUsername("  AB")));
 
 
 /*
@@ -384,6 +418,19 @@ if / else if / else
 */
 
 
+function checkPassword(password) {
+
+  const trimmed = password.trim();
+
+  if(trimmed.length < 8) {
+    return "Too Short";
+  } else if(trimmed.length <= 11 && trimmed.length >= 8) {
+    return "Medium password";
+  } else if(trimmed.length > 11) {
+    return "Strong password0";
+  }
+}
+
 /*
 ==================================================
 Exercise 11 REPEAT THE MESSAGE
@@ -418,6 +465,16 @@ Hint:
 Think carefully about how repeat() behaves when
 you give it a string containing a space.
 */
+
+function repeatMessage(str, num) {
+
+  const repeated = (str + " ").repeat(num);
+
+  return repeated;
+}
+
+console.log(repeatMessage("hello", 3));
+
 
 
 /*
@@ -456,83 +513,14 @@ length
 if / else
 */
 
+function getProductCode(code) {
+  const trimmed = code.trim();
+  const sliced = trimmed.slice(0,4);
+  const lowered = sliced.toLowerCase();
 
-/*
-==================================================
-Exercise 13 HIDE EMAIL
-==================================================
-
-Create a function called:
-
-hideEmail(email)
-
-The function receives an email address.
-
-Requirements:
-
-- Find the position of "@"
-- Keep everything before "@"
-- Replace everything after "@" with "***"
-- Return the modified email.
-
-Examples:
-
-hideEmail("john@gmail.com") → "john@***"
-hideEmail("test@yahoo.com") → "test@***"
-hideEmail("developer@example.com") → "developer@***"
-
-Useful methods/concepts:
-
-indexOf()
-slice()
-strings
-if / else
-
-Hint:
-
-You will need to figure out the position of "@"
-before deciding where slice() should start/end.
-
-Do NOT use split() for this exercise.
-*/
-
-
-
-/*
-==================================================
-Exercise 7 — Username Validation System
-==================================================
-
-Create a function called:
-
-validateUsername(username)
-
-Requirements:
-
-- Remove spaces from the beginning and end.
-- Convert the username to lowercase.
-
-- If the username is shorter than 3 characters,
-  return "Username too short".
-
-- If the username is longer than 15 characters,
-  return "Username too long".
-
-- If the username contains "admin",
-  return "Reserved username".
-
-- If the username starts with "user",
-  return "Username cannot start with user".
-
-- If the username ends with "123",
-  return "Username cannot end with 123".
-
-- If the username contains a space anywhere inside,
-  return "Username cannot contain spaces".
-
-- If all conditions are satisfied:
-  - Take the first 3 characters.
-  - Take the last 2 characters.
-  - Return them in this format:
-
-"Username: joh...an" */
+  if (lowered.length < 4) {
+    return "Invalid Code";
+  } else {
+    return lowered;
+  }
+}
