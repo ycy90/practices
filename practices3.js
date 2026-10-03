@@ -124,3 +124,202 @@
   console.log(salaryCalculator(20, 12, 10, 7, 1)); // Expected: 202500
   console.log("----------");
 }
+
+
+// 5. Pyramid Pattern
+// - Define a function with a character string, a row count, and a boolean direction parameter.
+// - Build and return a pyramid when direction is false or an inverted pyramid when it is true; log both patterns.
+{
+  function pyramid(str, num, boolean) {
+    let result = "\n";
+
+    for (let i = 1; i <= num; i++) {
+      if (boolean === false) {
+        result += " ".repeat(num - i) + str.repeat(i * 2 - 1) + "\n";
+      }
+    }
+
+    for (let i = num; i >= 1; i--) {
+      if (boolean === true) {
+        result += " ".repeat(num - i) + str.repeat(i * 2 - 1) + "\n";
+      }
+    }
+
+    return result;
+  }
+
+  console.log("Ex-5---------");
+  console.log(pyramid("*", 4, false)); // Expected: an upright pyramid with 4 rows
+  console.log(pyramid("*", 4, true)); // Expected: an inverted pyramid with 4 rows
+  console.log("----------");
+}
+
+
+// 6. Title Case
+// - Define a function with one string parameter and convert the string to lowercase before processing its words.
+// - Capitalize the first letter of each word, preserve the remaining letters, and return the formatted string; log sample results.
+{
+  function titleCase(str) {
+    const result = [];
+    const lowered = str.toLowerCase();
+    const arrStr = lowered.split(" ");
+
+    for (let i = 0; i < arrStr.length; i++) {
+      const splitted = arrStr[i].split("");
+      const rest = splitted.slice(1);
+      const capitalized = splitted[0].toUpperCase();
+      const arr2 = capitalized + rest.join("");
+      result.push(arr2);
+    }
+
+    const finalR = result.join(" ");
+    return finalR;
+  }
+
+  console.log("Ex-6---------");
+  console.log(titleCase("I'm a little tea pot")); // Expected: "I'm A Little Tea Pot"
+  console.log(titleCase("sHoRt AnD sToUt")); // Expected: "Short And Stout"
+  console.log("----------");
+}
+
+
+// 7. Falsy Value Filter
+// - Define a function with one array parameter and create a new array for the result.
+// - Keep only truthy values from the input array and return the filtered array; log sample results.
+{
+  function bouncer(arr) {
+    const newArr = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i]) {
+        newArr.push(arr[i]);
+      }
+    }
+
+    return newArr;
+  }
+
+  console.log("Ex-7---------");
+  console.log(bouncer([7, "ate", "", false, 9])); // Expected: [7, "ate", 9]
+  console.log(bouncer([false, null, 0, NaN, undefined, ""])); // Expected: []
+  console.log("----------");
+}
+
+
+// 8. Unique Array Union
+// - Define a function that accepts any number of arrays as arguments.
+// - Combine their values in order, keeping only the first occurrence of each value; log sample results.
+{
+  function uniteUnique(...arrays) {
+    const newArr = [];
+
+    for (const array of arrays) {
+      for (const subArr of array) {
+        if (!newArr.includes(subArr)) {
+          newArr.push(subArr);
+        }
+      }
+    }
+
+    return newArr;
+  }
+
+  console.log("Ex-8---------");
+  console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1])); // Expected: [1, 3, 2, 5, 4]
+  console.log(uniteUnique(["a", "b"], ["b", "c"])); // Expected: ["a", "b", "c"]
+  console.log("----------");
+}
+
+
+// 9. Random Password Generator
+// - Define a function with one parameter for the desired password length.
+// - Randomly select characters from the provided character pool until the password reaches that length, then return it; log a generated password.
+{
+  function generatePassword(digits) {
+    const passPool = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+    let validPass = "";
+
+    while (validPass.length < digits) {
+      const randomized = Math.floor(Math.random() * passPool.length);
+      validPass += passPool[randomized];
+    }
+
+    return validPass;
+  }
+
+  console.log("Ex-9---------");
+  const password = generatePassword(12);
+  console.log("Generated password: " + password); // Expected: a random 12-character password
+  console.log("----------");
+}
+
+
+// 10. Password Strength Checker
+// - Define a function with one password parameter and check its length, letter case, digits, and special characters.
+// - Count the satisfied conditions and return "weak", "medium", or "strong"; log examples for each level.
+
+{
+  function checkStrength(password) {
+    const cond1 = password.length >= 8;
+    const cond2 = /[A-Z]/.test(password) && /[a-z]/.test(password);
+    const cond3 = /\d/.test(password);
+    const cond4 = /[!@#$%^&*]/.test(password);
+    const condSet = [cond1, cond2, cond3, cond4];
+    const newCondSet = [];
+
+    for (const cond of condSet) {
+      if (cond) {
+        newCondSet.push(cond);
+      }
+    }
+
+    if (newCondSet.length < 2) {
+      return "weak";
+    } else if (newCondSet.length === 2 || newCondSet.length === 3) {
+      return "medium";
+    } else if (newCondSet.length === 4) {
+      return "strong";
+    }
+  }
+
+  console.log("Ex-10---------");
+  console.log(checkStrength("abc")); // Expected: weak
+  console.log(checkStrength("Password1")); // Expected: medium
+  console.log(checkStrength("Password1!")); // Expected: strong
+  console.log("----------");
+}
+
+
+// 11. Sum All Numbers in a Range
+// - Define a function with one array parameter containing two numbers, then identify the smaller and larger values.
+// - Use a while loop to add every number from the smaller value through the larger value, inclusive, and return the total.
+{
+  function sumAll(arr) {
+    let min;
+    let max;
+
+    if (arr[0] > arr[1]) {
+      min = arr[1];
+      max = arr[0];
+    } else {
+      min = arr[0];
+      max = arr[1];
+    }
+
+    let sum = 0;
+    let current = min;
+
+    while (current <= max) {
+      sum += current;
+      current++;
+    }
+
+    return sum;
+  }
+
+  console.log("Ex-11---------");
+  console.log(sumAll([1, 4])); // Expected: 10
+  console.log(sumAll([4, 1])); // Expected: 10
+  console.log("----------");
+}
+
