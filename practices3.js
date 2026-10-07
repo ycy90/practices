@@ -323,3 +323,41 @@
   console.log("----------");
 }
 
+
+
+// 13. DNA Pairing
+// - Define a function with one DNA string parameter and inspect each nucleotide in the string.
+// - Pair T with A, A with T, C with G, and G with C, then return an array containing each nucleotide pair.
+{
+  function pairElement(str) {
+    const paired = [];
+    const analyze = str.split("");
+
+    for (const letter of analyze) {
+      const subPaired = [];
+
+      if (letter === "T") {
+        subPaired.push("T");
+        subPaired.push("A");
+      } else if (letter === "A") {
+        subPaired.push("A");
+        subPaired.push("T");
+      } else if (letter === "C") {
+        subPaired.push("C");
+        subPaired.push("G");
+      } else if (letter === "G") {
+        subPaired.push("G");
+        subPaired.push("C");
+      }
+
+      paired.push(subPaired);
+    }
+
+    return paired;
+  }
+
+  console.log("Ex-13---------");
+  console.log(pairElement("ATCGA")); // Expected: [["A", "T"], ["T", "A"], ["C", "G"], ["G", "C"], ["A", "T"]]
+  console.log(pairElement("TTG")); // Expected: [["T", "A"], ["T", "A"], ["G", "C"]]
+  console.log("----------");
+}
