@@ -361,3 +361,27 @@
   console.log(pairElement("TTG")); // Expected: [["T", "A"], ["T", "A"], ["G", "C"]]
   console.log("----------");
 }
+
+
+// 14. Favorite Icon Toggle
+{
+  if (typeof document !== "undefined") {
+    const favicon = document.querySelectorAll(".favorite-icon");
+
+    function togglefav(e) {
+      if (e.target.classList.contains("filled")) {
+        e.target.classList.remove("filled");
+        e.target.innerHTML = "&#9825;";
+      } else {
+        e.target.classList.add("filled");
+        e.target.innerHTML = "&#10084;";
+      }
+    }
+
+    console.log("Ex-14---------");
+    favicon.forEach((favicon) => {
+      favicon.addEventListener("click", togglefav);
+    });
+    console.log("----------");
+  }
+}

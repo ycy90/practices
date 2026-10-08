@@ -18,7 +18,7 @@ Exercises are stored in numbered JavaScript files. Each file contains up to 25 e
 | --- | --- |
 | `practices1.js` | 1–25 |
 | `practices2.js` | 1–25 |
-| `practices3.js` | 1–11 |
+| `practices3.js` | 1–14 |
 
 When a file reaches 25 exercises, add the next exercise to a new file: `practices4.js`, `practices5.js`, and so on.
 
