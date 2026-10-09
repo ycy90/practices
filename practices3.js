@@ -385,3 +385,116 @@
     console.log("----------");
   }
 }
+
+
+// 15. Sum of Odd Fibonacci Numbers
+// - Define a function with one number parameter and generate Fibonacci numbers up to that limit.
+// - Add the odd Fibonacci numbers to a running total and return the sum.
+{
+  function sumFibs(num) {
+    let current = 2;
+    let previous = 1;
+    let result = 2;
+
+    while (current <= num) {
+      if (num > 1 && current % 2 === 1) {
+        result += current;
+      }
+
+      let next = current + previous;
+      previous = current;
+      current = next;
+    }
+
+    return result;
+  }
+
+  console.log("Ex-15---------");
+  console.log(sumFibs(4)); // Expected: 5
+  console.log("----------");
+}
+
+
+// 16. Convert HTML Entities
+// - Define an object that maps the characters &, <, >, double quotes, and apostrophes to their HTML entities.
+// - Define a function that replaces every matching character in a string with its mapped entity and returns the converted string.
+{
+  const entities = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&apos;"
+  };
+
+  function convertHTML(str) {
+    let result = str;
+
+    for (let entity in entities) {
+      if (str.includes(entity)) {
+        const newStr = result.replaceAll(entity, entities[entity]);
+        result = newStr;
+      }
+    }
+
+    return result;
+  }
+
+  console.log("Ex-16---------");
+  console.log(convertHTML('Dolce & "Gabbana"')); // Expected: Dolce &amp; &quot;Gabbana&quot;
+  console.log(convertHTML("Hamburgers < Pizza < Tacos")); // Expected: Hamburgers &lt; Pizza &lt; Tacos
+  console.log("----------");
+}
+
+
+// 17. Drop Elements
+// - Define a function that accepts an array and a callback function.
+// - Starting from the first element, test each value with the callback; return a new array from the first value that passes through the end, or an empty array if none pass.
+{
+  function dropElements(arr, func) {
+    for (let i = 0; i < arr.length; i++) {
+      if (func(arr[i])) {
+        const newArr = arr.slice(i);
+        return newArr;
+      }
+    }
+
+    return [];
+  }
+
+  console.log("Ex-17---------");
+  console.log(dropElements([1, 2, 3, 4], n => n >= 3)); // Expected: [3, 4]
+  console.log(dropElements([1, 2, 3], n => n > 5)); // Expected: []
+  console.log("----------");
+}
+
+
+// 18. Sum All Primes
+// - Define a function with one number parameter and check every integer from 2 through that number.
+// - Determine whether each integer is prime, add the prime numbers to a running total, and return the sum.
+{
+  function sumPrimes(num) {
+    let result = 0;
+
+    for (let i = 2; i <= num; i++) {
+      let isPrime = true;
+
+      for (let j = 2; j < i; j++) {
+        if (i % j === 0) {
+          isPrime = false;
+          break;
+        }
+      }
+
+      if (isPrime) {
+        result += i;
+      }
+    }
+
+    return result;
+  }
+
+  console.log("Ex-18---------");
+  console.log(sumPrimes(10)); // Expected: 17
+  console.log("----------");
+}
